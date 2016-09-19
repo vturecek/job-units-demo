@@ -55,7 +55,8 @@ namespace WebService.Controllers
                 serviceDescription.Metrics.Add(new StatelessServiceLoadMetricDescription()
                 {
                     Name = "JobUnits",
-                    DefaultLoad = workload.Value
+                    DefaultLoad = workload.Value,
+                    Weight = ServiceLoadMetricWeight.High
                 });
             }
             return fabricClient.ServiceManager.CreateServiceAsync(serviceDescription);
