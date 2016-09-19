@@ -3,7 +3,7 @@
 }
 
 <div id="main">
-    <h1>Job Units Demo</h1>
+    <h1>Job Units Demo: <strong>@ViewData["ApplicationName"]</strong></h1>
     <div id="form">
         <h2>Create a job</h2>
         <input type="text" id="jobName" placeholder="name" />
@@ -15,7 +15,11 @@
 </div>
 <script>
     $(function () {
-		var path = window.location.pathname;
+        var path = window.location.pathname;
+        if (path.endsWith("/"))
+        {
+            path = path.slice(0, -1);
+        }
 
 		$('#newJob').click(function () {
 		    $('#result').html('');
