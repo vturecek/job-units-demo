@@ -1,0 +1,211 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ClusterManifest Name="Development-Nine-Node-Server" Description="This nine node cluster is used for setting up a development cluster on Windows server" Version="1.0" xmlns="http://schemas.microsoft.com/2011/01/fabric" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <NodeTypes>
+    <NodeType Name="NodeType01">
+      <Endpoints>
+        <ClientConnectionEndpoint Port="19000" />
+        <LeaseDriverEndpoint Port="19001" />
+        <ClusterConnectionEndpoint Port="19002" />
+        <HttpGatewayEndpoint Port="19080" Protocol="http" />
+        <ServiceConnectionEndpoint Port="19006" />
+        <ApplicationEndpoints StartPort="30001" EndPort="31000" />
+      </Endpoints>
+      <Capacities>
+        <Capacity Name="WorkUnits" Value="100"/>
+        <Capacity Name="MemoryKB" Value="131072"/>
+        <Capacity Name="DiskKB" Value="524288"/>
+      </Capacities>
+    </NodeType>
+    <NodeType Name="NodeType02">
+      <Endpoints>
+        <ClientConnectionEndpoint Port="19010" />
+        <LeaseDriverEndpoint Port="19011" />
+        <ClusterConnectionEndpoint Port="19012" />
+        <HttpGatewayEndpoint Port="19081" Protocol="http" />
+        <ServiceConnectionEndpoint Port="19016" />
+        <ApplicationEndpoints StartPort="31001" EndPort="32000" />
+      </Endpoints>
+      <Capacities>
+        <Capacity Name="WorkUnits" Value="100"/>
+        <Capacity Name="MemoryKB" Value="131072"/>
+        <Capacity Name="DiskKB" Value="524288"/>
+      </Capacities>
+    </NodeType>
+    <NodeType Name="NodeType03">
+      <Endpoints>
+        <ClientConnectionEndpoint Port="19020" />
+        <LeaseDriverEndpoint Port="19021" />
+        <ClusterConnectionEndpoint Port="19022" />
+        <HttpGatewayEndpoint Port="19082" Protocol="http" />
+        <ServiceConnectionEndpoint Port="19026" />
+        <ApplicationEndpoints StartPort="32001" EndPort="33000" />
+      </Endpoints>
+      <Capacities>
+        <Capacity Name="WorkUnits" Value="100"/>
+        <Capacity Name="MemoryKB" Value="131072"/>
+        <Capacity Name="DiskKB" Value="524288"/>
+      </Capacities>
+    </NodeType>
+    <NodeType Name="NodeType04">
+      <Endpoints>
+        <ClientConnectionEndpoint Port="19030" />
+        <LeaseDriverEndpoint Port="19031" />
+        <ClusterConnectionEndpoint Port="19032" />
+        <HttpGatewayEndpoint Port="19083" Protocol="http" />
+        <ServiceConnectionEndpoint Port="19036" />
+        <ApplicationEndpoints StartPort="33001" EndPort="34000" />
+      </Endpoints>
+      <Capacities>
+        <Capacity Name="WorkUnits" Value="100"/>
+        <Capacity Name="MemoryKB" Value="131072"/>
+        <Capacity Name="DiskKB" Value="524288"/>
+      </Capacities>
+    </NodeType>
+    <NodeType Name="NodeType05">
+      <Endpoints>
+        <ClientConnectionEndpoint Port="19040" />
+        <LeaseDriverEndpoint Port="19041" />
+        <ClusterConnectionEndpoint Port="19042" />
+        <HttpGatewayEndpoint Port="19084" Protocol="http" />
+        <ServiceConnectionEndpoint Port="19046" />
+        <ApplicationEndpoints StartPort="34001" EndPort="35000" />
+      </Endpoints>
+      <Capacities>
+        <Capacity Name="WorkUnits" Value="100"/>
+        <Capacity Name="MemoryKB" Value="131072"/>
+        <Capacity Name="DiskKB" Value="524288"/>
+      </Capacities>
+    </NodeType>
+    <NodeType Name="NodeType06">
+      <Endpoints>
+        <ClientConnectionEndpoint Port="19050" />
+        <LeaseDriverEndpoint Port="19051" />
+        <ClusterConnectionEndpoint Port="19052" />
+        <HttpGatewayEndpoint Port="19085" Protocol="http" />
+        <ServiceConnectionEndpoint Port="19056" />
+        <ApplicationEndpoints StartPort="35001" EndPort="36000" />
+      </Endpoints>
+      <Capacities>
+        <Capacity Name="WorkUnits" Value="100"/>
+        <Capacity Name="MemoryKB" Value="131072"/>
+        <Capacity Name="DiskKB" Value="524288"/>
+      </Capacities>
+    </NodeType>
+    <NodeType Name="NodeType07">
+      <Endpoints>
+        <ClientConnectionEndpoint Port="19060" />
+        <LeaseDriverEndpoint Port="19061" />
+        <ClusterConnectionEndpoint Port="19062" />
+        <HttpGatewayEndpoint Port="19086" Protocol="http" />
+        <ServiceConnectionEndpoint Port="19066" />
+        <ApplicationEndpoints StartPort="36001" EndPort="37000" />
+      </Endpoints>
+      <Capacities>
+        <Capacity Name="WorkUnits" Value="100"/>
+        <Capacity Name="MemoryKB" Value="131072"/>
+        <Capacity Name="DiskKB" Value="524288"/>
+      </Capacities>
+    </NodeType>
+  </NodeTypes>
+  <Infrastructure>
+    <!-- IsScaleMin indicates that this cluster runs on one-box /one single server -->
+    <WindowsServer IsScaleMin="true">
+      <NodeList>
+        <!-- For one-box each IPAddressOrFQDN can be localhost or IP address. -->
+        <!-- 7 Nodes, 7 seeds, 3 Fault Domains (FD), 3 Upgrade Domains (UD). -->
+        <!-- The Nodenames need to be unique. The FD names chosen in this example reflect DataCenter(DC) and Rack.  -->
+        <Node NodeName="Node01" IPAddressOrFQDN="localhost" NodeTypeRef="NodeType01" FaultDomain="fd:/DC01/Rack01" UpgradeDomain="UpgradeDomain1" IsSeedNode="true" />
+        <Node NodeName="Node02" IPAddressOrFQDN="localhost" NodeTypeRef="NodeType02" FaultDomain="fd:/DC01/Rack02" UpgradeDomain="UpgradeDomain1" IsSeedNode="true" />
+        <Node NodeName="Node03" IPAddressOrFQDN="localhost" NodeTypeRef="NodeType03" FaultDomain="fd:/DC01/Rack03" UpgradeDomain="UpgradeDomain2" IsSeedNode="true" />
+        <Node NodeName="Node04" IPAddressOrFQDN="localhost" NodeTypeRef="NodeType04" FaultDomain="fd:/DC01/Rack04" UpgradeDomain="UpgradeDomain2" IsSeedNode="true" />
+        <Node NodeName="Node05" IPAddressOrFQDN="localhost" NodeTypeRef="NodeType05" FaultDomain="fd:/DC01/Rack05" UpgradeDomain="UpgradeDomain3" IsSeedNode="true" />
+        <Node NodeName="Node06" IPAddressOrFQDN="localhost" NodeTypeRef="NodeType06" FaultDomain="fd:/DC01/Rack06" UpgradeDomain="UpgradeDomain3" IsSeedNode="true" />
+        <Node NodeName="Node07" IPAddressOrFQDN="localhost" NodeTypeRef="NodeType07" FaultDomain="fd:/DC01/Rack07" UpgradeDomain="UpgradeDomain3" IsSeedNode="true" />
+      </NodeList>
+    </WindowsServer>
+  </Infrastructure>
+  <FabricSettings>
+    <Section Name="Security">
+      <Parameter Name="ClusterCredentialType" Value="None" />
+      <Parameter Name="ServerAuthCredentialType" Value="None" />
+    </Section>
+    <!--INTERNAL_CONFIG_ENTRY(Common::TimeSpan, L"FailoverManager", PeriodicLoadPersistInterval, Common::TimeSpan::FromSeconds(10.0), Common::ConfigEntryUpgradePolicy::Static);-->
+    <Section Name="FailoverManager">
+      <Parameter Name="TargetReplicaSetSize" Value="5"/>
+      <Parameter Name="MinReplicaSetSize" Value="3"/>
+      <Parameter Name="ExpectedClusterSize" Value="5"/>
+      <Parameter Name="ClusterStableWaitDuration" Value="10" />
+      <Parameter Name="StandByReplicaKeepDuration" Value="60" />
+      <Parameter Name="PeriodicLoadPersistInterval" Value="5" />
+    </Section>
+    <Section Name="NamingService">
+      <Parameter Name="TargetReplicaSetSize" Value="5"/>
+      <Parameter Name="MinReplicaSetSize" Value="3"/>
+    </Section>
+    <Section Name="ClusterManager">
+      <Parameter Name="TargetReplicaSetSize" Value="5"/>
+      <Parameter Name="MinReplicaSetSize" Value="3"/>
+      <Parameter Name="UpgradeStatusPollInterval" Value="1" />
+      <Parameter Name="UpgradeHealthCheckInterval" Value="1" />
+      <Parameter Name="FabricUpgradeStatusPollInterval" Value="1" />
+      <Parameter Name="FabricUpgradeHealthCheckInterval" Value="1" />
+    </Section>
+	<Section Name="HttpGateway">
+      <Parameter Name="IsEnabled" Value="true" />
+    </Section>
+    <Section Name="ImageStoreService">
+      <Parameter Name="TargetReplicaSetSize" Value="5"/>
+      <Parameter Name="MinReplicaSetSize" Value="3"/>
+    </Section>
+    <!--INTERNAL_CONFIG_ENTRY(Common::TimeSpan, L"ReconfigurationAgent", SendLoadReportInterval, Common::TimeSpan::FromSeconds(300), Common::ConfigEntryUpgradePolicy::Static);-->
+    <Section Name="ReconfigurationAgent">
+      <Parameter Name="SendLoadReportInterval" Value="1"/>
+      <Parameter Name="ServiceApiHealthDuration" Value="20" />
+      <Parameter Name="ServiceReconfigurationApiHealthDuration" Value="20" />
+      <Parameter Name="LocalHealthReportingTimerInterval" Value="5" />
+      <Parameter Name="IsDeactivationInfoEnabled" Value="true" />
+      <Parameter Name="RAUpgradeProgressCheckInterval" Value="3" />
+    </Section>
+    <Section Name="Management">
+      <Parameter Name="ImageStoreConnectionString" Value="file:C:\SfDevCluster\Data\ImageStoreShare" />
+      <Parameter Name="ImageCachingEnabled" Value="false" />
+      <Parameter Name="EnableDeploymentAtDataRoot" Value="true" />
+    </Section>
+	<Section Name="Federation">
+      <Parameter Name="NodeIdGeneratorVersion" Value="V4" />
+      <Parameter Name="UnresponsiveDuration" Value="0" />
+    </Section>
+    <Section Name="Hosting">
+      <Parameter Name="EndpointProviderEnabled" Value="true"/>
+      <Parameter Name="RunAsPolicyEnabled" Value="true"/>
+      <Parameter Name="DeactivationGraceInterval" Value="5" />
+      <Parameter Name="DeactivationScanInterval" Value="60" />
+      <Parameter Name="EnableProcessDebugging" Value="true" />
+      <Parameter Name="ServiceTypeRegistrationTimeout" Value="20" />
+      <Parameter Name="CacheCleanupScanInterval" Value="300" />
+    </Section>
+    <Section Name="Trace/Etw">
+      <Parameter Name="Level" Value="4" />
+    </Section>
+    <Section Name="Diagnostics">
+      <Parameter Name="ProducerInstances" Value="ServiceFabricEtlFile, ServiceFabricPerfCtrFolder" />
+      <Parameter Name="MaxDiskQuotaInMB" Value="10240" />
+    </Section>
+    <Section Name="ServiceFabricEtlFile">
+      <Parameter Name="ProducerType" Value="EtlFileProducer" />
+      <Parameter Name="IsEnabled" Value="true" />
+      <Parameter Name="EtlReadIntervalInMinutes" Value=" 5" />
+      <Parameter Name="DataDeletionAgeInDays" Value="3" />
+    </Section>
+    <Section Name="ServiceFabricPerfCtrFolder">
+      <Parameter Name="ProducerType" Value="FolderProducer" />
+      <Parameter Name="IsEnabled" Value="true" />
+      <Parameter Name="FolderType" Value="ServiceFabricPerformanceCounters" />
+      <Parameter Name="DataDeletionAgeInDays" Value="3" />
+    </Section>
+    <Section Name="TransactionalReplicator">
+      <Parameter Name="CheckpointThresholdInMB" Value="64" />
+    </Section>
+
+  </FabricSettings>
+</ClusterManifest>

@@ -54,7 +54,7 @@ namespace WebService.Controllers
             {
                 serviceDescription.Metrics.Add(new StatelessServiceLoadMetricDescription()
                 {
-                    Name = "JobUnits",
+                    Name = "WorkUnits",
                     DefaultLoad = workload.Value,
                     Weight = ServiceLoadMetricWeight.High
                 });
