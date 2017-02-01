@@ -41,14 +41,19 @@ namespace StatelessJobService
             //       or remove this RunAsync override if it's not needed in your service.
 
             long iterations = 0;
-
+            Random r = new Random();
             while (true)
             {
                 cancellationToken.ThrowIfCancellationRequested();
 
                 ServiceEventSource.Current.ServiceMessage(this, "Working-{0}", ++iterations);
 
-                await Task.Delay(TimeSpan.FromSeconds(1), cancellationToken);
+               // int load = r.Next(10, 50);
+               // ServiceEventSource.Current.ServiceMessage(this, "Reportin: {0}", load);
+
+               // this.Partition.ReportLoad(new[] { new LoadMetric("JobUnits", load) });
+
+                await Task.Delay(TimeSpan.FromSeconds(2), cancellationToken);
             }
         }
     }
